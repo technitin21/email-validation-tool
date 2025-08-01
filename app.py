@@ -15,7 +15,7 @@ def main():
         layout="wide"
     )
     
-    st.title("DataView Labs Email Validation")
+
     
     # Initialize session state
     if 'validation_results' not in st.session_state:
@@ -23,7 +23,7 @@ def main():
     if 'processing' not in st.session_state:
         st.session_state.processing = False
     if 'current_tab' not in st.session_state:
-        st.session_state.current_tab = "Upload"
+        st.session_state.current_tab = "Home"
     
     # Sidebar Navigation
     with st.sidebar:
@@ -75,6 +75,10 @@ def main():
         st.markdown(tab_style, unsafe_allow_html=True)
         
         # Navigation Tabs
+        if st.button("🏠 Home", key="home_tab", use_container_width=True):
+            st.session_state.current_tab = "Home"
+            st.rerun()
+            
         if st.button("📤 Upload", key="upload_tab", use_container_width=True):
             st.session_state.current_tab = "Upload"
             st.rerun()
@@ -102,7 +106,120 @@ def main():
         st.markdown("---")
     
     # Main Content Area based on selected tab
-    if st.session_state.current_tab == "Upload":
+    if st.session_state.current_tab == "Home":
+        # Landing page - Logo first
+        st.markdown("<div style='padding: 20px 0;'></div>", unsafe_allow_html=True)
+        
+        # Center the logo
+        col1, col2, col3 = st.columns([1, 2, 1])
+        with col2:
+            try:
+                st.image("assets/dataview_logo.png", width=400)
+            except:
+                st.markdown(
+                    """
+                    <div style='text-align: center; padding: 20px; border: 2px dashed #ccc; border-radius: 10px; margin: 20px 0;'>
+                        <h3 style='color: #666;'>DataView Labs Logo</h3>
+                        <p style='color: #888;'>Professional Email Validation</p>
+                    </div>
+                    """, 
+                    unsafe_allow_html=True
+                )
+        
+        # Welcome message below logo
+        st.markdown(
+            """
+            <div style='text-align: center; padding: 20px 0;'>
+                <h1 style='color: #2E86AB; font-size: 3em; margin-bottom: 20px;'>Welcome to Email Validation Tool</h1>
+            </div>
+            """, 
+            unsafe_allow_html=True
+        )
+        
+        # Welcome message and features
+        st.markdown(
+            """
+            <div style='background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); padding: 40px; border-radius: 15px; margin: 30px 0; text-align: center;'>
+                <h2 style='color: #2c3e50; margin-bottom: 25px;'>Professional Email Validation Solution</h2>
+                <p style='font-size: 1.2em; color: #34495e; line-height: 1.6; max-width: 800px; margin: 0 auto;'>
+                    Our advanced email validation tool uses SMTP connections and MX record verification to ensure your email lists are clean, 
+                    accurate, and ready for successful campaigns. Get comprehensive insights into your email data quality with our 
+                    professional-grade validation engine.
+                </p>
+            </div>
+            """, 
+            unsafe_allow_html=True
+        )
+        
+        # Feature highlights
+        col1, col2, col3 = st.columns(3)
+        
+        with col1:
+            st.markdown(
+                """
+                <div style='background-color: white; padding: 25px; border-radius: 10px; border-left: 4px solid #3498db; text-align: center; height: 200px; display: flex; flex-direction: column; justify-content: center;'>
+                    <h3 style='color: #3498db; margin-bottom: 15px;'>🚀 SMTP Validation</h3>
+                    <p style='color: #555;'>Real-time email verification using direct SMTP server connections for maximum accuracy</p>
+                </div>
+                """, 
+                unsafe_allow_html=True
+            )
+        
+        with col2:
+            st.markdown(
+                """
+                <div style='background-color: white; padding: 25px; border-radius: 10px; border-left: 4px solid #e74c3c; text-align: center; height: 200px; display: flex; flex-direction: column; justify-content: center;'>
+                    <h3 style='color: #e74c3c; margin-bottom: 15px;'>📊 Advanced Analytics</h3>
+                    <p style='color: #555;'>Comprehensive metrics and visual dashboards to understand your email data health</p>
+                </div>
+                """, 
+                unsafe_allow_html=True
+            )
+        
+        with col3:
+            st.markdown(
+                """
+                <div style='background-color: white; padding: 25px; border-radius: 10px; border-left: 4px solid #2ecc71; text-align: center; height: 200px; display: flex; flex-direction: column; justify-content: center;'>
+                    <h3 style='color: #2ecc71; margin-bottom: 15px;'>🎯 Smart Recommendations</h3>
+                    <p style='color: #555;'>Actionable insights and recommendations to improve your email deliverability</p>
+                </div>
+                """, 
+                unsafe_allow_html=True
+            )
+        
+        # Get started button
+        st.markdown("<br>", unsafe_allow_html=True)
+        col1, col2, col3 = st.columns([1, 1, 1])
+        with col2:
+            if st.button("🚀 Get Started", type="primary", use_container_width=True):
+                st.session_state.current_tab = "Upload"
+                st.rerun()
+        
+        # Statistics section
+        st.markdown(
+            """
+            <div style='background-color: #2c3e50; color: white; padding: 30px; border-radius: 10px; margin: 40px 0; text-align: center;'>
+                <h3 style='margin-bottom: 20px;'>Trusted by Professionals</h3>
+                <div style='display: flex; justify-content: space-around; flex-wrap: wrap;'>
+                    <div style='margin: 10px;'>
+                        <h2 style='color: #3498db; margin: 0;'>99.9%</h2>
+                        <p style='margin: 5px 0;'>Accuracy Rate</p>
+                    </div>
+                    <div style='margin: 10px;'>
+                        <h2 style='color: #e74c3c; margin: 0;'>< 5s</h2>
+                        <p style='margin: 5px 0;'>Average Validation Time</p>
+                    </div>
+                    <div style='margin: 10px;'>
+                        <h2 style='color: #2ecc71; margin: 0;'>100K+</h2>
+                        <p style='margin: 5px 0;'>Emails Validated Daily</p>
+                    </div>
+                </div>
+            </div>
+            """, 
+            unsafe_allow_html=True
+        )
+    
+    elif st.session_state.current_tab == "Upload":
         # File upload section
         st.header("📁 Upload CSV File")
         uploaded_file = st.file_uploader(
