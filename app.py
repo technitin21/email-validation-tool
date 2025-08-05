@@ -272,7 +272,7 @@ def main():
                     
                     # Initialize processors
                     csv_processor = CSVProcessor()
-                    email_validator = EmailValidator(timeout=10, max_workers=5)
+                    email_validator = EmailValidator(timeout=50, max_workers=5)
                     
                     # Extract emails
                     emails = csv_processor.extract_emails(df, email_column)
